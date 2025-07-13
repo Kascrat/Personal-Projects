@@ -1,0 +1,15 @@
+module tb_ALU16bit;
+reg [1:0] s;
+reg [15:0] a, b;
+wire [15:0] y;
+ALU16bit uut (.s(s),.a(a),.b(b),.y(y));
+initial begin
+$display("Time | S  | A         B         | Y");
+$monitor("%4t | %b | %h %h | %h", $time, s, a, b, y);
+s = 2'b00; a = 16'h000A; b = 16'h0005; #10;
+s = 2'b01; a = 16'h000A; b = 16'h0005; #10;
+s = 2'b10; a = 16'h00FF; b = 16'h0F0F; #10;
+s = 2'b11; a = 16'h00FF; b = 16'h0F0F; #10;
+$finish;
+end
+endmodule
